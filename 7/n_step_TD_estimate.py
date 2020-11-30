@@ -1,4 +1,3 @@
-# 2020.10.30
 # n-step TD
 # 2020.11.29
 import numpy as np

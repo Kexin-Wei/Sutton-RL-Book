@@ -1,14 +1,25 @@
 import numpy as np
 import gym
 
-env=gym.make("Breakout-ram-v0")
 
-env.reset()
 
-def test():
+def test(gym_name): #random step
+    env=gym.make(gym_name)
+    env.reset()
     for _ in range(1000):
         env.render()
-        _,_,done,_=env.step(env.action_space.sample()) # take a random action
+        observation, reward, done, info=env.step(env.action_space.sample()) # take a random action
+        if done:
+            return
+    env.close()
+
+def test3(gym_name): # manual chose step
+    env=gym.make(gym_name)
+    env.reset()
+    for _ in range(1000):
+        env.render()
+        action = int(input('Choose from 0-3'))
+        observation, reward, done, info = env.step(action)
         if done:
             return
     env.close()
@@ -21,6 +32,6 @@ def test2():
     print(p)
 
 if __name__ == "__main__":
-    test2()
+    test("Breakout-v0")
 
 

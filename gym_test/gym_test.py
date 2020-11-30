@@ -1,6 +1,7 @@
-import matplotlib.pyplot as plt
+
 import numpy as np
 import gym
+import matplotlib.pyplot as plt
 class env_fl():
     def __init__(self):
         pass
@@ -31,7 +32,7 @@ class env_fl():
         plt.close()
         
 
-def test1():
+def test1(): # random step
     import gym
     env = gym.make('FrozenLake-v0') # CartPole-v0,MountainCar-v0
     env.reset()
@@ -42,13 +43,13 @@ def test1():
             return
     env.close()
 
-def test2():
+def test2(): # show up model
     import gym
     env = gym.make('Copy-v0')
     env.reset()
     env.render()
 
-def Atari():
+def test2_2(): #
     import gym
     env = gym.make('SpaceInvaders-v0') #SpaceInvaders-v0, MsPacman-v0
     env.reset()
@@ -57,14 +58,15 @@ def Atari():
 def test3(): # check what is in observation
     import gym
     
-    env = gym.make('FrozenLake-v0')
+    env = gym.make("Breakout-v0") #('FrozenLake-v0')
     end_steps=[]
     for i_episode in range(20):
         observation = env.reset()
-        for t in range(100):
+        for t in range(10**6):
             env.render()
-            print(observation)
+            #print(observation)
             action = env.action_space.sample() # take a random action
+            print(action)
             observation, reward, done, info = env.step(action)
             if done:
                 print("Episode finished after {} timesteps".format(t+1))
