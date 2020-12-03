@@ -32,9 +32,9 @@ class env_fl():
         plt.close()
         
 
-def test1(): # random step
+def test1(gym_name): # random step
     import gym
-    env = gym.make('FrozenLake-v0') # CartPole-v0,MountainCar-v0
+    env = gym.make(gym_name) # CartPole-v0, MountainCar-v0, 'FrozenLake-v0'
     env.reset()
     for _ in range(1000):
         env.render()
@@ -43,30 +43,29 @@ def test1(): # random step
             return
     env.close()
 
-def test2(): # show up model
+def test2(gym_name): # show up model
     import gym
-    env = gym.make('Copy-v0')
+    env = gym.make(gym_name) #'Copy-v0'
     env.reset()
     env.render()
 
-def test2_2(): #
+def test2_2(gym_name): #
     import gym
-    env = gym.make('SpaceInvaders-v0') #SpaceInvaders-v0, MsPacman-v0
+    env = gym.make(gym_name) # SpaceInvaders-v0, MsPacman-v0
     env.reset()
     env.render()
 
-def test3(): # check what is in observation
+def test3(gym_name): # check what is in observation
     import gym
-    
-    env = gym.make("Breakout-v0") #('FrozenLake-v0')
+    env = gym.make(gym_name) # Breakout-v0, FrozenLake-v0
     end_steps=[]
     for i_episode in range(20):
         observation = env.reset()
         for t in range(10**6):
             env.render()
-            #print(observation)
+            print(t)
             action = env.action_space.sample() # take a random action
-            print(action)
+            #print(action)
             observation, reward, done, info = env.step(action)
             if done:
                 print("Episode finished after {} timesteps".format(t+1))
@@ -76,9 +75,8 @@ def test3(): # check what is in observation
     plt.show()
     env.close()
 
-def test4():
-    import gym
-    env = gym.make('CartPole-v0')
+def test4(env_name):
+    env = gym.make(env_name)
     highscore = 0
     point_record=[]
     for i_episode in range(20): # run 20 episodes
@@ -99,4 +97,4 @@ def test4():
     
 
 if __name__=="__main__":
-    test3()
+    test3('Breakout-v0')
