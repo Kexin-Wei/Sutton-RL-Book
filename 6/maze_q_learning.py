@@ -73,6 +73,9 @@ def run():
     terminal = ob_maze([maze_dim[0]-1,maze_dim[1]-1],maze_dim)
     a_agent.QValue[terminal,:] = 0
 
+    ob = env.reset()
+    env.render()
+    input("start?")
     # run episodes
     for ep in range(max_episode):
         # episode_initial for agent
